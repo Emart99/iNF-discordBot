@@ -11,7 +11,6 @@
 ### Dependencias
 - #### Springboot
 - #### Discord4j
-- #### Dotenv-java
 - #### Logback-classic
 - #### Lavaplayer
 - #### YoutubeApi
