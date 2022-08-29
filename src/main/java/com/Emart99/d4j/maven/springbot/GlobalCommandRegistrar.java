@@ -12,6 +12,7 @@ import com.Emart99.d4j.maven.springbot.commands.simpleAudioCommands.ResumeComman
 import com.Emart99.d4j.maven.springbot.commands.simpleAudioCommands.StopCommand;
 import com.Emart99.d4j.maven.springbot.commands.simpleTextCommands.CoinflipCommand;
 import com.Emart99.d4j.maven.springbot.commands.simpleTextCommands.CoinflipCommandV2;
+import com.Emart99.d4j.maven.springbot.commands.simpleTextCommands.PeroWnCommand;
 import com.Emart99.d4j.maven.springbot.commands.simpleTextCommands.PorroCommand;
 import com.Emart99.d4j.maven.springbot.listeners.CommandListener;
 import com.Emart99.d4j.maven.springbot.utils.ScheduledPing;
@@ -52,6 +53,7 @@ public class GlobalCommandRegistrar implements ApplicationRunner {
         final AudioLoadResultHandlerImplementation audioLoadResult = new AudioLoadResultHandlerImplementation(player,scheduler);
         YoutubeSearch youtubeHelper = new YoutubeSearch(System.getenv("YOUTUBE_APIKEY"));
 
+        commands.put("perown",new PeroWnCommand());
         commands.put("help",new HelpCommand());
         commands.put("porro",new PorroCommand());
         commands.put("cf",new CoinflipCommand());
