@@ -10,10 +10,7 @@ import com.Emart99.d4j.maven.springbot.commands.scheduledSimpleCommands.NosVamos
 import com.Emart99.d4j.maven.springbot.commands.simpleAudioCommands.PauseCommand;
 import com.Emart99.d4j.maven.springbot.commands.simpleAudioCommands.ResumeCommand;
 import com.Emart99.d4j.maven.springbot.commands.simpleAudioCommands.StopCommand;
-import com.Emart99.d4j.maven.springbot.commands.simpleTextCommands.CoinflipCommand;
-import com.Emart99.d4j.maven.springbot.commands.simpleTextCommands.CoinflipCommandV2;
-import com.Emart99.d4j.maven.springbot.commands.simpleTextCommands.PeroWnCommand;
-import com.Emart99.d4j.maven.springbot.commands.simpleTextCommands.PorroCommand;
+import com.Emart99.d4j.maven.springbot.commands.simpleTextCommands.*;
 import com.Emart99.d4j.maven.springbot.listeners.CommandListener;
 import com.Emart99.d4j.maven.springbot.utils.ScheduledPing;
 import com.Emart99.d4j.maven.springbot.utils.YoutubeSearch;
@@ -52,7 +49,8 @@ public class GlobalCommandRegistrar implements ApplicationRunner {
         player.addListener(scheduler);
         final AudioLoadResultHandlerImplementation audioLoadResult = new AudioLoadResultHandlerImplementation(player,scheduler);
         YoutubeSearch youtubeHelper = new YoutubeSearch(System.getenv("YOUTUBE_APIKEY"));
-
+        
+        commands.put("godno",new GodNoCommand());
         commands.put("perown",new PeroWnCommand());
         commands.put("help",new HelpCommand());
         commands.put("porro",new PorroCommand());
