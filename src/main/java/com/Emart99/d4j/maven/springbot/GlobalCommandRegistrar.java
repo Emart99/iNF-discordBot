@@ -49,7 +49,7 @@ public class GlobalCommandRegistrar implements ApplicationRunner {
         player.addListener(scheduler);
         final AudioLoadResultHandlerImplementation audioLoadResult = new AudioLoadResultHandlerImplementation(player,scheduler);
         YoutubeSearch youtubeHelper = new YoutubeSearch(System.getenv("YOUTUBE_APIKEY"));
-        
+        commands.put("baldu", new BalduCommand());
         commands.put("godno",new GodNoCommand());
         commands.put("perown",new PeroWnCommand());
         commands.put("help",new HelpCommand());
