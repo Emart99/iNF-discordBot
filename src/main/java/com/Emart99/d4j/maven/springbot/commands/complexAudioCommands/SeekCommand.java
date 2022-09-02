@@ -21,7 +21,7 @@ public class SeekCommand extends ComplexAudioCommand {
 
     @Override
     public String getName() {
-        return null;
+        return "*seek";
     }
 
     @Override

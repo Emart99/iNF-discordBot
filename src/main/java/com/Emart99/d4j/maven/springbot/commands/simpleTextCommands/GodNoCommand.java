@@ -6,7 +6,7 @@ import discord4j.core.event.domain.message.MessageCreateEvent;
 public class GodNoCommand implements Command {
     @Override
     public String getName() {
-        return "godno";
+        return "*godno";
     }
 
     @Override

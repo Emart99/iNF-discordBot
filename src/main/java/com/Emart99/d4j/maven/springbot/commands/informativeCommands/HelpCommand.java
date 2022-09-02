@@ -27,6 +27,9 @@ public class HelpCommand implements Command {
         builder.addField("*sanguchoto","Reproduce un mitico audio del gordo agucho, en paz descanse ✝️.",false);
         builder.addField("*aceitedecoco","Reproduce el gran audio aceite de coco by el Benha.",false);
         builder.addField("*hitbenha","Reproduce todos versus el Benha.",false);
+        builder.addField("*perown","perown.",false);
+        builder.addField("*baldu","Baldu la leyenda..",false);
+        builder.addField("*meme","Random meme.",false);
         event.getMessage().getChannel().block().createMessage(builder.build()).block();
     }
 }

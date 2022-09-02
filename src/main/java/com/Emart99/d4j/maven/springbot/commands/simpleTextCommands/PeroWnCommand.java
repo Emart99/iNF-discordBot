@@ -6,7 +6,7 @@ import discord4j.core.event.domain.message.MessageCreateEvent;
 public class PeroWnCommand implements Command {
     @Override
     public String getName() {
-        return "perown";
+        return "*perown";
     }
 
     @Override
