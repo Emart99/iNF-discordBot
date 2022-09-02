@@ -12,7 +12,7 @@ public class MemeCommand implements Command {
 
     @Override
     public void execute(MessageCreateEvent event) throws Exception {
-        String memeLink = ApiConsumer.consume("https://meme-api.herokuapp.com/gimme");
+        String memeLink = ApiConsumer.consume("https://meme-api.herokuapp.com/gimme/dankgentina");
         event.getMessage()
                 .getChannel()
                 .block()
