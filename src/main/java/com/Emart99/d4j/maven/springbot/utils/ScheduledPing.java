@@ -14,7 +14,7 @@ public class ScheduledPing {
                     @Override
                     public void run() {
                         try {
-                            HttpURLConnection connection = (HttpURLConnection) new URL("https://inf-bot-final.herokuapp.com/".replaceFirst("^https", "http")).openConnection();
+                            HttpURLConnection connection = (HttpURLConnection) new URL("https://inf-bot1.herokuapp.com/".replaceFirst("^https", "http")).openConnection();
                             connection.setConnectTimeout(3000);
                             connection.setReadTimeout(3000);
                             connection.setRequestMethod("GET");
