@@ -23,7 +23,7 @@ public class SkipCommand extends ComplexAudioCommand {
         try{
             if(isBotInVoiceChannel(event.getGuild().block()) && scheduler.isPlaying()){
                 scheduler.nextTrack();
-                event.getMessage().addReaction(ReactionEmoji.unicode("✅")).block();
+                event.getMessage().addReaction(ReactionEmoji.unicode("\u2705")).block();
             }
         }catch (NullPointerException ignore){
             event.getMessage().getChannel().block().createMessage("Error, no puede usar este comando sin estar en un canal").block();
