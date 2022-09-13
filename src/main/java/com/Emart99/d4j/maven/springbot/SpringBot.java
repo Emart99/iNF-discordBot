@@ -17,7 +17,6 @@ public class SpringBot {
             .build()
             .run(args);
     }
-
     @Bean
     public GatewayDiscordClient gatewayDiscordClient() {
         return DiscordClientBuilder.create(System.getenv("DISCORD_TOKEN")).build()
@@ -26,7 +25,6 @@ public class SpringBot {
                 .login()
                 .block();
     }
-
     @Bean
     public RestClient discordRestClient(GatewayDiscordClient client) {
         return client.getRestClient();
