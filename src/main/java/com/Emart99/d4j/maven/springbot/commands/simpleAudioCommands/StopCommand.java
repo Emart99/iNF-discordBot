@@ -31,7 +31,7 @@ public class StopCommand extends SimpleAudioCommand {
         Mono.justOrEmpty(event.getMember())
                 .flatMap(Member::getVoiceState)
                 .flatMap(voiceState -> client.getVoiceConnectionRegistry().getVoiceConnection(voiceState.getGuildId())
-                .flatMap(VoiceConnection::disconnect)).block();
+                .flatMap(VoiceConnection::disconnect)).subscribe();
         super.execute(event);
     }
 }
