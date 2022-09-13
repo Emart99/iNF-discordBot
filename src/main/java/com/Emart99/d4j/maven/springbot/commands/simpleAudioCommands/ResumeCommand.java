@@ -21,7 +21,6 @@ public class ResumeCommand extends SimpleAudioCommand {
     public void execute(MessageCreateEvent event) throws Exception {
         if(isPlaying()){
             player.setPaused(false);
-            super.execute(event);
         }
     }
 }
