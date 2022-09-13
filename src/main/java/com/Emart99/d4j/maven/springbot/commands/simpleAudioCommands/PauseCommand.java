@@ -18,10 +18,10 @@ public class PauseCommand extends SimpleAudioCommand {
     }
 
     @Override
-    public void execute(MessageCreateEvent event) {
+    public void execute(MessageCreateEvent event) throws Exception {
         if(isPlaying()){
             player.setPaused(true);
-            event.getMessage().addReaction(ReactionEmoji.unicode("✅")).block();
+            super.execute(event);
         }
     }
 }

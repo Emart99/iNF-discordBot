@@ -25,13 +25,13 @@ public class StopCommand extends SimpleAudioCommand {
     }
 
     @Override
-    public void execute(MessageCreateEvent event) {
+    public void execute(MessageCreateEvent event) throws Exception {
         scheduler.destroyQueue();
         player.destroy();
         Mono.justOrEmpty(event.getMember())
                 .flatMap(Member::getVoiceState)
                 .flatMap(voiceState -> client.getVoiceConnectionRegistry().getVoiceConnection(voiceState.getGuildId())
                 .flatMap(VoiceConnection::disconnect)).block();
-        event.getMessage().addReaction(ReactionEmoji.unicode("✅")).block();
+        super.execute(event);
     }
 }

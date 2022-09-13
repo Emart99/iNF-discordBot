@@ -18,10 +18,10 @@ public class ResumeCommand extends SimpleAudioCommand {
     }
 
     @Override
-    public void execute(MessageCreateEvent event) {
+    public void execute(MessageCreateEvent event) throws Exception {
         if(isPlaying()){
             player.setPaused(false);
-            event.getMessage().addReaction(ReactionEmoji.unicode("✅")).block();
+            super.execute(event);
         }
     }
 }
