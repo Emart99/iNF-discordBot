@@ -5,6 +5,7 @@ import com.Emart99.d4j.maven.springbot.commands.ComplexAudioCommand;
 import com.Emart99.d4j.maven.springbot.utils.UrlManager;
 import com.Emart99.d4j.maven.springbot.utils.YoutubeSearch;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
+import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import discord4j.core.event.domain.message.MessageCreateEvent;
 import discord4j.voice.AudioProvider;
 import org.springframework.stereotype.Component;
@@ -43,6 +44,9 @@ public class PlayCommand extends ComplexAudioCommand {
         }
         catch (IndexOutOfBoundsException  ignored){
             event.getMessage().getChannel().block().createMessage("Error, cantidad de parametros incorrecta").block();
+        }
+        catch( FriendlyException friendlyException){
+            event.getMessage().getChannel().block().createMessage("Algo se rompio relacionado al reproductor, vuelva a intentar").block();
         }
     }
 }
