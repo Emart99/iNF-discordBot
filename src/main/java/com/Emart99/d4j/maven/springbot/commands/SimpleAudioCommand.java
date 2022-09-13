@@ -15,6 +15,6 @@ public abstract class SimpleAudioCommand implements Command{
 
     @Override
     public void execute(MessageCreateEvent event) throws Exception {
-        event.getMessage().addReaction(ReactionEmoji.unicode("✅")).subscribe();
+        event.getMessage().addReaction(ReactionEmoji.unicode(":white_check_mark:")).subscribe();
     }
 }
