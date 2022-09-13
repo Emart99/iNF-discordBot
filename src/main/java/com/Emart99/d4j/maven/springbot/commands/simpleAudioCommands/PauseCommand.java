@@ -21,6 +21,7 @@ public class PauseCommand extends SimpleAudioCommand {
     public void execute(MessageCreateEvent event) throws Exception {
         if(isPlaying()){
             player.setPaused(true);
+            super.execute(event);
         }
     }
 }

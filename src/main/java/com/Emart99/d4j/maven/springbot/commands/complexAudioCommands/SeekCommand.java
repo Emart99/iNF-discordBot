@@ -31,7 +31,7 @@ public class SeekCommand extends ComplexAudioCommand {
         try{
             if(isBotInVoiceChannel(event.getGuild().block()) && scheduler.isPlaying() && p.matcher(time).matches() ){
                 scheduler.seek(TimeParser.fronStringToLong(time));
-                event.getMessage().addReaction(ReactionEmoji.unicode("✅")).block();
+                event.getMessage().addReaction(ReactionEmoji.unicode("\u2705")).block();
             }
         }catch (FriendlyException e){
             event.getMessage()

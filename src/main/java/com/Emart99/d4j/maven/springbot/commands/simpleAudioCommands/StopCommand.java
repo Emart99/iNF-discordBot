@@ -32,5 +32,6 @@ public class StopCommand extends SimpleAudioCommand {
                 .flatMap(Member::getVoiceState)
                 .flatMap(voiceState -> client.getVoiceConnectionRegistry().getVoiceConnection(voiceState.getGuildId())
                 .flatMap(VoiceConnection::disconnect)).subscribe();
+        super.execute(event);
     }
 }
