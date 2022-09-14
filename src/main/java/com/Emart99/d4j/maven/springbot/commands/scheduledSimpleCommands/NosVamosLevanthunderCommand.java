@@ -29,7 +29,7 @@ public class NosVamosLevanthunderCommand {
                     }
                 },
                 date.getTime(),
-                86400000
+                1000 * 60 * 60 * 24
         );
         System.out.println(date.getTime());
     }
