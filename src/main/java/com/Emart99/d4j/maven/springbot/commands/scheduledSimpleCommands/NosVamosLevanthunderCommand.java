@@ -31,6 +31,6 @@ public class NosVamosLevanthunderCommand {
                 date.getTime(),
                 86400000
         );
-        System.out.println(date);
+        System.out.println(date.getTime());
     }
 }
