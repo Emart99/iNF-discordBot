@@ -68,7 +68,7 @@ public class GlobalCommandRegistrar implements ApplicationRunner {
         commands.put("sanguchoto",new SanguchotoCommand(provider,playerManager,audioLoadResult));
         commands.put("aceitedecoco",new AceiteDeCocoCommand(provider,playerManager,audioLoadResult));
 
-        new NosVamosLevanthunderCommand().execute(discordClient);
+        //new NosVamosLevanthunderCommand().execute(discordClient);
 
         final CommandListener listener = new CommandListener(commands,discordClient);
         listener.handle();
