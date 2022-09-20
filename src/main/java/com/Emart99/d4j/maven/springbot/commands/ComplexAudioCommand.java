@@ -5,6 +5,7 @@ import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import discord4j.core.event.domain.message.MessageCreateEvent;
 import discord4j.core.object.entity.Guild;
 import discord4j.core.object.entity.channel.VoiceChannel;
+import discord4j.core.object.reaction.ReactionEmoji;
 import discord4j.voice.AudioProvider;
 
 import java.util.Objects;
@@ -22,7 +23,6 @@ public abstract class ComplexAudioCommand implements Command{
     public void execute(MessageCreateEvent event) throws Exception {
             Guild guild = event.getGuild().block();
             VoiceChannel voiceChannel = event.getMember().orElse(null).getVoiceState().block().getChannel().block();
-            // Check if any VoiceState for this guild relates to bot
             assert guild != null;
             if (!isBotInVoiceChannel(guild)) {
                 voiceChannel.join(spec -> spec.setProvider(provider)).block();
@@ -31,7 +31,7 @@ public abstract class ComplexAudioCommand implements Command{
     }
 
     public Boolean isBotInVoiceChannel(Guild guild){
-        return Boolean.TRUE.equals(guild.getVoiceStates() // Check if any VoiceState for this guild relates to bot
+        return Boolean.TRUE.equals(guild.getVoiceStates()
                 .any(voiceState -> guild.getClient().getSelfId().equals(voiceState.getUserId()))
                 .block());
     }

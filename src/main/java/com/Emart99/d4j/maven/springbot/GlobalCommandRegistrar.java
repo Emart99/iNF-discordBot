@@ -12,7 +12,6 @@ import com.Emart99.d4j.maven.springbot.commands.simpleAudioCommands.ResumeComman
 import com.Emart99.d4j.maven.springbot.commands.simpleAudioCommands.StopCommand;
 import com.Emart99.d4j.maven.springbot.commands.simpleTextCommands.*;
 import com.Emart99.d4j.maven.springbot.listeners.CommandListener;
-import com.Emart99.d4j.maven.springbot.utils.ScheduledPing;
 import com.Emart99.d4j.maven.springbot.utils.YoutubeSearch;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
@@ -67,6 +66,8 @@ public class GlobalCommandRegistrar implements ApplicationRunner {
         commands.put("hitbenha",new HitBenhaCommand(provider,playerManager,audioLoadResult));
         commands.put("sanguchoto",new SanguchotoCommand(provider,playerManager,audioLoadResult));
         commands.put("aceitedecoco",new AceiteDeCocoCommand(provider,playerManager,audioLoadResult));
+        commands.put("shuffle", new ShuffleCommand(provider,playerManager,audioLoadResult));
+
 
         new NosVamosLevanthunderCommand().execute(discordClient);
 

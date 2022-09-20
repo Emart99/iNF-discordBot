@@ -10,6 +10,9 @@ import discord4j.core.spec.EmbedCreateSpec;
 import reactor.core.publisher.Mono;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -40,7 +43,13 @@ public class TrackScheduler extends AudioEventAdapter {
     public boolean hasNext(){
         return queue.size() > 0;
     }
+    public void shuffleQueue(){
+            var queueToArrayList =  new ArrayList<AudioTrack>();
+            queue.drainTo(queueToArrayList);
+            Collections.shuffle(queueToArrayList);
+            queueToArrayList.forEach(track -> this.queue(track));
 
+    }
     @Override
     public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason) {
         if (endReason.mayStartNext) {

@@ -7,6 +7,7 @@ import com.Emart99.d4j.maven.springbot.utils.YoutubeSearch;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import discord4j.core.event.domain.message.MessageCreateEvent;
+import discord4j.core.object.reaction.ReactionEmoji;
 import discord4j.voice.AudioProvider;
 import org.springframework.stereotype.Component;
 
@@ -37,6 +38,9 @@ public class PlayCommand extends ComplexAudioCommand {
                             playerManager.loadItem(youtubeUrl,scheduler);
                         }
                 }
+            }
+            else{
+                event.getMessage().addReaction(ReactionEmoji.unicode("\u274C")).block();
             }
         }
         catch (NullPointerException ignored){

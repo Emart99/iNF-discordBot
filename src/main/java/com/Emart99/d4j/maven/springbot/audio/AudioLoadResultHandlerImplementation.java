@@ -45,6 +45,12 @@ public final class AudioLoadResultHandlerImplementation implements AudioLoadResu
             scheduler.queue(track);
         }
     }
+    public void shufflePlaylist(){
+        if(!isPlaying()){
+            throw new NullPointerException();
+        }
+        scheduler.shuffleQueue();
+    }
     public void nextTrack(){
         scheduler.nextTrack();
     }
