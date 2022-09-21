@@ -11,6 +11,7 @@ import com.Emart99.d4j.maven.springbot.commands.simpleAudioCommands.PauseCommand
 import com.Emart99.d4j.maven.springbot.commands.simpleAudioCommands.ResumeCommand;
 import com.Emart99.d4j.maven.springbot.commands.simpleAudioCommands.StopCommand;
 import com.Emart99.d4j.maven.springbot.commands.simpleTextCommands.*;
+import com.Emart99.d4j.maven.springbot.listeners.BotLeavingListener;
 import com.Emart99.d4j.maven.springbot.listeners.CommandListener;
 import com.Emart99.d4j.maven.springbot.utils.YoutubeSearch;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
@@ -73,6 +74,8 @@ public class GlobalCommandRegistrar implements ApplicationRunner {
 
         final CommandListener listener = new CommandListener(commands,discordClient);
         listener.handle();
+        final BotLeavingListener botLeavingListener = new BotLeavingListener(discordClient,player,audioLoadResult);
+        botLeavingListener.handle();
     }
 }
 

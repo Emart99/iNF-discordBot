@@ -71,6 +71,7 @@ public class TrackScheduler extends AudioEventAdapter {
                                 .flatMap(Member::getVoiceState)
                                 .flatMap(voiceState -> client.getVoiceConnectionRegistry().getVoiceConnection(voiceState.getGuildId())
                                         .flatMap(VoiceConnection::disconnect)).subscribe();
+                        player.destroy();
                     }
                     timer.cancel();
                 }
