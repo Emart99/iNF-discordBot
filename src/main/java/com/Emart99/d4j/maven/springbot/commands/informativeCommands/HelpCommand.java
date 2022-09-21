@@ -21,6 +21,7 @@ public class HelpCommand implements Command {
         builder.addField("*pause","Pausa el track que se esta reproduciendo.",false);
         builder.addField("*resume","Reproduce un track previamente pausado.",false);
         builder.addField("*stop","Borra la cola y desconecta al bot del channel.",false);
+        builder.addField("*shuffle","Randomiza la cola.",false);
         builder.addField("*porro","Me prendo ese \uD83D\uDE17\uD83D\uDC4C\uD83D\uDEAC.",false);
         builder.addField("*cf","Coinflip, devuelve cara o seca.",false);
         builder.addField("*cf2","Coinflip2, espera al menos 2 valores, ej: *cf2 a b.",false);

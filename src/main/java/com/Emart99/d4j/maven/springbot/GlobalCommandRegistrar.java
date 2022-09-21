@@ -44,7 +44,7 @@ public class GlobalCommandRegistrar implements ApplicationRunner {
         AudioSourceManagers.registerRemoteSources(playerManager);
         final AudioPlayer player = playerManager.createPlayer();
         AudioProvider provider = new LavaPlayerAudioProvider(player);
-        TrackScheduler scheduler = new TrackScheduler(player);
+        TrackScheduler scheduler = new TrackScheduler(player,discordClient);
         player.addListener(scheduler);
         final AudioLoadResultHandlerImplementation audioLoadResult = new AudioLoadResultHandlerImplementation(player,scheduler);
         YoutubeSearch youtubeHelper = new YoutubeSearch(System.getenv("YOUTUBE_APIKEY"));

@@ -15,12 +15,14 @@ public final class AudioLoadResultHandlerImplementation implements AudioLoadResu
     private final AudioPlayer player;
     private final TrackScheduler scheduler ;
     public MessageChannel messageChannel;
+    private MessageCreateEvent event;
     public AudioLoadResultHandlerImplementation(final AudioPlayer player, TrackScheduler scheduler){
         this.player = player;
         this.scheduler = scheduler;
     }
 
-    public void addActualChannel(MessageChannel messageChannel){
+    public void addActualChannel(MessageChannel messageChannel,MessageCreateEvent event){
+        this.event = event;
         this.messageChannel = messageChannel;
     }
 
@@ -29,13 +31,13 @@ public final class AudioLoadResultHandlerImplementation implements AudioLoadResu
     }
     @Override
     public void trackLoaded(final AudioTrack track) {
-        scheduler.setChannel(this.messageChannel);
+        scheduler.setChannel(this.event);
         this.messageChannel.createMessage(track.getInfo().title + " agregado a la cola").block();
         scheduler.queue(track);
     }
     @Override
     public void playlistLoaded(final AudioPlaylist playlist) {
-        scheduler.setChannel(this.messageChannel);
+        scheduler.setChannel(this.event);
         this.messageChannel.createMessage(playlist.getTracks().size() + " canciones agregadas al cola").block();
         AudioTrack firstTrack = playlist.getSelectedTrack();
         if (firstTrack == null) {
