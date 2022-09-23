@@ -69,13 +69,10 @@ public class GlobalCommandRegistrar implements ApplicationRunner {
         commands.put("aceitedecoco",new AceiteDeCocoCommand(provider,playerManager,audioLoadResult));
         commands.put("shuffle", new ShuffleCommand(provider,playerManager,audioLoadResult));
 
-
         new NosVamosLevanthunderCommand().execute(discordClient);
 
-        final CommandListener listener = new CommandListener(commands,discordClient);
-        listener.handle();
-        final BotLeavingListener botLeavingListener = new BotLeavingListener(discordClient,player,audioLoadResult);
-        botLeavingListener.handle();
+        new CommandListener(commands,discordClient).handle();
+        new BotLeavingListener(discordClient,player,audioLoadResult).handle();
     }
 }
 
