@@ -26,17 +26,30 @@ public class SeekCommand extends ComplexAudioCommand {
 
     @Override
     public void execute(MessageCreateEvent event){
-        final String time = Arrays.asList(event.getMessage().getContent().split(" ")).get(1);
-        final Pattern p = Pattern.compile("\\d{2}:\\d{2}:\\d{2}");
         try{
-            if(isBotInVoiceChannel(event.getGuild().block()) && scheduler.isPlaying() && p.matcher(time).matches() ){
+            String time = Arrays.asList(event.getMessage().getContent().split(" ")).get(1);
+            //System.out.print(scheduler.getActualTrackDuration());
+            final Pattern patternWithHours = Pattern.compile("\\d{2}:\\d{2}:\\d{2}");
+            final Pattern patternWithoutHours = Pattern.compile("\\d{2}:\\d{2}");
+            if(patternWithoutHours.matcher(time).matches()){
+                final String zero = "00:";
+                time = zero.concat(time);
+                System.out.println(time);
+            }
+
+            if(isBotInVoiceChannel(event.getGuild().block()) && scheduler.isPlaying() && patternWithHours.matcher(time).matches()){
                 scheduler.seek(TimeParser.fronStringToLong(time));
                 event.getMessage().addReaction(ReactionEmoji.unicode("\u2705")).block();
             }
-        }catch (FriendlyException e){
+        }catch (NullPointerException | FriendlyException e){
             event.getMessage()
                     .getChannel().block()
-                    .createMessage("Valor invalido, el formato debe ser 00:00:00, y no puede ser mayor a la duracion del tema").block();
+                    .createMessage("Valor invalido, el formato debe ser 00:00 o 00:00:00, y no puede ser mayor a la duracion del tema").block();
+        }
+        catch (ArrayIndexOutOfBoundsException e){
+            event.getMessage()
+                    .getChannel().block()
+                    .createMessage("Error, no ha indicado el tiempo.").block();
         }
     }
 
