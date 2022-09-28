@@ -17,7 +17,7 @@ public class HelpCommand implements Command {
         builder.title("Comandos disponibles");
         builder.addField("*play","Reproduce tracks de youtube, espera como input un link o el nombre de un video, si ya hay un track reproduciendo lo agrega a la cola.",false);
         builder.addField("*skip","Saltea al siguiente track de la cola.",false);
-        builder.addField("*seek","Adelanta el track que se esta reproduciendo actualmente a un momento especifico, espera como input horas minutos segundos, de la forma 00:00:00.",false);
+        builder.addField("*seek","Adelanta el track que se esta reproduciendo actualmente a un momento especifico, espera como input horas minutos segundos, de la forma 00:00 o 00:00:00.",false);
         builder.addField("*pause","Pausa el track que se esta reproduciendo.",false);
         builder.addField("*resume","Reproduce un track previamente pausado.",false);
         builder.addField("*stop","Borra la cola y desconecta al bot del channel.",false);
