@@ -28,6 +28,7 @@ public abstract class ComplexAudioCommand implements Command{
                 voiceChannel.join(spec -> spec.setProvider(provider)).block();
             }
             scheduler.addActualChannel(event.getMessage().getChannel().block(),event);
+            scheduler.setRepeat(false,0);
     }
 
     public Boolean isBotInVoiceChannel(Guild guild){

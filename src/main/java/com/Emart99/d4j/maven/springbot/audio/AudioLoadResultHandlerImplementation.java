@@ -16,6 +16,8 @@ public final class AudioLoadResultHandlerImplementation implements AudioLoadResu
     private final TrackScheduler scheduler ;
     public MessageChannel messageChannel;
     private MessageCreateEvent event;
+    private Boolean isRepeatableTrack = false;
+    private Integer timesRepeated = 0;
     public AudioLoadResultHandlerImplementation(final AudioPlayer player, TrackScheduler scheduler){
         this.player = player;
         this.scheduler = scheduler;
@@ -25,15 +27,29 @@ public final class AudioLoadResultHandlerImplementation implements AudioLoadResu
         this.event = event;
         this.messageChannel = messageChannel;
     }
-
+    public void setRepeat(Boolean bool, Integer _timesRepeated){
+        isRepeatableTrack = bool;
+        timesRepeated = _timesRepeated;
+    }
     public void destroyQueue(){
         this.scheduler.destroyQueue();
     }
     @Override
     public void trackLoaded(final AudioTrack track) {
         scheduler.setChannel(this.event);
-        this.messageChannel.createMessage(track.getInfo().title + " agregado a la cola").block();
+        // esto es medio rustico, pero bueno la vida es dura
+        System.out.println(isRepeatableTrack + " " + timesRepeated);
+        if(isRepeatableTrack && timesRepeated != 0){
+            isRepeatableTrack = false;
+            this.messageChannel.createMessage(track.getInfo().title + " agregado a la cola " + timesRepeated + " veces").block();
+            System.out.println(isRepeatableTrack + " " + timesRepeated);
+        }
+        if(!isRepeatableTrack && timesRepeated == 0){
+            this.messageChannel.createMessage(track.getInfo().title + " agregado a la cola").block();
+        }
         scheduler.queue(track);
+
+
     }
     @Override
     public void playlistLoaded(final AudioPlaylist playlist) {

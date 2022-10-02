@@ -6,6 +6,7 @@ import com.Emart99.d4j.maven.springbot.utils.UrlManager;
 import com.Emart99.d4j.maven.springbot.utils.YoutubeSearch;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
+import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import discord4j.core.event.domain.message.MessageCreateEvent;
 import discord4j.core.object.reaction.ReactionEmoji;
 import discord4j.voice.AudioProvider;
@@ -32,6 +33,7 @@ public class RepeatCommand extends ComplexAudioCommand {
             final Integer numberOfRepeat = Integer.valueOf(message.get(1));
             super.execute(event);
             if(isBotInVoiceChannel((Objects.requireNonNull(event.getGuild().block())))){
+                scheduler.setRepeat(true, numberOfRepeat);
                 if(UrlManager.verifyUrl(urlOrSomethingToPlay)){
                     for(int i = 0; i<numberOfRepeat; i++ ){
                         playerManager.loadItem(urlOrSomethingToPlay.replace(" ", ""), scheduler);
