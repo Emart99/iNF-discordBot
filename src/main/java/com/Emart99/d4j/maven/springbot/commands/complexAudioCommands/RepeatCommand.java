@@ -9,45 +9,48 @@ import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import discord4j.core.event.domain.message.MessageCreateEvent;
 import discord4j.core.object.reaction.ReactionEmoji;
 import discord4j.voice.AudioProvider;
-import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-public class PlayCommand extends ComplexAudioCommand {
+
+public class RepeatCommand extends ComplexAudioCommand {
+    @Override
+    public String getName() {
+        return "*repeat";
+    }
     private final YoutubeSearch youtubeHelper;
-    public PlayCommand(AudioProvider provider, AudioPlayerManager playerManager, AudioLoadResultHandlerImplementation scheduler, YoutubeSearch youtubeHelper) {
+    public RepeatCommand(AudioProvider provider, AudioPlayerManager playerManager, AudioLoadResultHandlerImplementation scheduler, YoutubeSearch youtubeHelper) {
         super(provider, playerManager, scheduler);
         this.youtubeHelper = youtubeHelper;
     }
     @Override
-    public String getName() {
-        return "*play";
-    }
-
-    @Override
     public void execute(MessageCreateEvent event) throws Exception {
         try{
-            final List<String> message = Arrays.asList(event.getMessage().getContent().split(" "));
-            final String urlOrSomethingToPlay = message.get(1);
+            final List<String> message =Arrays.asList(event.getMessage().getContent().split(" "));
+            final String urlOrSomethingToPlay = message.get(2);
+            final Integer numberOfRepeat = Integer.valueOf(message.get(1));
             super.execute(event);
             if(isBotInVoiceChannel((Objects.requireNonNull(event.getGuild().block())))){
                 if(UrlManager.verifyUrl(urlOrSomethingToPlay)){
-                    playerManager.loadItem(urlOrSomethingToPlay.replace(" ", ""), scheduler);
+                    for(int i = 0; i<numberOfRepeat; i++ ){
+                        playerManager.loadItem(urlOrSomethingToPlay.replace(" ", ""), scheduler);
+                    }
                 }
                 else{
                     final String youtubeUrl = UrlManager.constructYoutubeUri(youtubeHelper.getResults(urlOrSomethingToPlay,1).get(0).getCode());
-                    playerManager.loadItem(youtubeUrl,scheduler);
+                    for(int i =0 ; i<numberOfRepeat; i++){
+                        playerManager.loadItem(youtubeUrl,scheduler);
+                    }
                 }
-            }
-            else{
+            } else{
                 event.getMessage().addReaction(ReactionEmoji.unicode("\u274C")).block();
             }
         }
         catch (NullPointerException ignored){
             event.getMessage().getChannel().block().createMessage("Error, no puede usar este comando sin estar en un canal").block();
         }
-        catch (IndexOutOfBoundsException  ignored){
+        catch (NumberFormatException |IndexOutOfBoundsException  ignored){
             event.getMessage().getChannel().block().createMessage("Error, cantidad de parametros incorrecta").block();
         }
         catch( FriendlyException friendlyException){

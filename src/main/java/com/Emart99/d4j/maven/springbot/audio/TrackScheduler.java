@@ -42,9 +42,9 @@ public class TrackScheduler extends AudioEventAdapter {
     }
 
     public void nextTrack() {
-        if(hasNext()){
+
             player.startTrack(queue.poll(),false);
-        }
+
     }
     public boolean hasNext(){
         return queue.size() > 0;

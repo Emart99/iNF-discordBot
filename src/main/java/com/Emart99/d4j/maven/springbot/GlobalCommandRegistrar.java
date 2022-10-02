@@ -62,6 +62,7 @@ public class GlobalCommandRegistrar implements ApplicationRunner {
         commands.put("resume",new ResumeCommand(player));
         commands.put("stop",new StopCommand(player, discordClient,audioLoadResult));
         commands.put("play",new PlayCommand(provider,playerManager,audioLoadResult,youtubeHelper));
+        commands.put("repeat", new RepeatCommand(provider,playerManager,audioLoadResult,youtubeHelper));
         commands.put("skip",new SkipCommand(provider,playerManager,audioLoadResult));
         commands.put("seek",new SeekCommand(provider,playerManager,audioLoadResult));
         commands.put("hitbenha",new HitBenhaCommand(provider,playerManager,audioLoadResult));
