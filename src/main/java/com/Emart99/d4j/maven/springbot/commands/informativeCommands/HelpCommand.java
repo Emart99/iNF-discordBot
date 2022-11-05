@@ -31,6 +31,7 @@ public class HelpCommand implements Command {
         builder.addField("*hitbenha","Reproduce todos versus el Benha.",false);
         builder.addField("*perown","perown.",false);
         builder.addField("*baldu","Baldu la leyenda..",false);
+        builder.addField("*fuckthat","fuckthat.",false);
         builder.addField("*meme","Random meme.",false);
         event.getMessage().getChannel().block().createMessage(builder.build()).block();
     }

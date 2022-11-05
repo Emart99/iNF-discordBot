@@ -53,6 +53,7 @@ public class GlobalCommandRegistrar implements ApplicationRunner {
         commands.put("meme", new MemeCommand());
         commands.put("baldu", new BalduCommand());
         commands.put("godno",new GodNoCommand());
+        commands.put("fuckthat", new FuckThatCommand());
         commands.put("perown",new PeroWnCommand());
         commands.put("help",new HelpCommand());
         commands.put("porro",new PorroCommand());
