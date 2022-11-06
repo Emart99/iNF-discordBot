@@ -29,14 +29,15 @@ public class PlayCommand extends ComplexAudioCommand {
     public void execute(MessageCreateEvent event) throws Exception {
         try{
             final List<String> message = Arrays.asList(event.getMessage().getContent().split(" "));
-            message.remove(0);
+            final String urlOrSomethingToPlay = message.get(1);
             super.execute(event);
             if(isBotInVoiceChannel((Objects.requireNonNull(event.getGuild().block())))){
-                if(UrlManager.verifyUrl(message.get(0))){
-                    playerManager.loadItem(message.get(0).replace(" ", ""), scheduler);
+                if(UrlManager.verifyUrl(message.get(1))){
+                    playerManager.loadItem(message.get(1).replace(" ", ""), scheduler);
                 }
                 else{
-                    final String youtubeUrl = UrlManager.constructYoutubeUri(youtubeHelper.getResults(message.get(0),1).get(0).getCode());
+                    message.remove(0);
+                    final String youtubeUrl = UrlManager.constructYoutubeUri(youtubeHelper.getResults(message.toString(),1).get(0).getCode());
                     playerManager.loadItem(youtubeUrl,scheduler);
                 }
             }
