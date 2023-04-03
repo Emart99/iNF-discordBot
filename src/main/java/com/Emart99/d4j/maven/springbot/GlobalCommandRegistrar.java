@@ -6,7 +6,6 @@ import com.Emart99.d4j.maven.springbot.audio.TrackScheduler;
 import com.Emart99.d4j.maven.springbot.commands.Command;
 import com.Emart99.d4j.maven.springbot.commands.complexAudioCommands.*;
 import com.Emart99.d4j.maven.springbot.commands.informativeCommands.HelpCommand;
-import com.Emart99.d4j.maven.springbot.commands.scheduledSimpleCommands.NosVamosLevanthunderCommand;
 import com.Emart99.d4j.maven.springbot.commands.simpleAudioCommands.PauseCommand;
 import com.Emart99.d4j.maven.springbot.commands.simpleAudioCommands.ResumeCommand;
 import com.Emart99.d4j.maven.springbot.commands.simpleAudioCommands.StopCommand;
@@ -71,7 +70,7 @@ public class GlobalCommandRegistrar implements ApplicationRunner {
         commands.put("aceitedecoco",new AceiteDeCocoCommand(provider,playerManager,audioLoadResult));
         commands.put("shuffle", new ShuffleCommand(provider,playerManager,audioLoadResult));
 
-        new NosVamosLevanthunderCommand().execute(discordClient);
+        //new NosVamosLevanthunderCommand().execute(discordClient);
 
         new CommandListener(commands,discordClient).handle();
         new BotLeavingListener(discordClient,player,audioLoadResult).handle();

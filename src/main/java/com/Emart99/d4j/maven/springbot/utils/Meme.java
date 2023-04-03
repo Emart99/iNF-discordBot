@@ -5,12 +5,13 @@ import java.util.List;
 public class Meme {
 
     private String postLink;
-    private String me_irl;
+    private String subreddit;
     private String title;
     private String url;
     private Boolean nswf;
     private Boolean spoiler;
-    private String MahmoudAo;
+    private String author;
+    private Integer ups;
     private List<String> preview;
 
     public String getPostLink() {
@@ -21,12 +22,12 @@ public class Meme {
         this.postLink = postLink;
     }
 
-    public String getMe_irl() {
-        return me_irl;
+    public String getSubreddit() {
+        return subreddit;
     }
 
-    public void setMe_irl(String me_irl) {
-        this.me_irl = me_irl;
+    public void setSubreddit(String subreddit) {
+        this.subreddit = subreddit;
     }
 
     public String getTitle() {
@@ -61,12 +62,12 @@ public class Meme {
         this.spoiler = spoiler;
     }
 
-    public String getMahmoudAo() {
-        return MahmoudAo;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setMahmoudAo(String mahmoudAo) {
-        MahmoudAo = mahmoudAo;
+    public void setAuthor(String author) {
+        author = author;
     }
 
     public List<String> getPreview() {
@@ -76,6 +77,6 @@ public class Meme {
     public void setPreview(List<String> preview) {
         this.preview = preview;
     }
-
-
+    public Integer getUps() { return ups; }
+    public void setUps(Integer ups) { this.ups = ups; }
 }
