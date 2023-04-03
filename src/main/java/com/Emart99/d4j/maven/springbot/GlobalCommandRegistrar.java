@@ -65,11 +65,10 @@ public class GlobalCommandRegistrar implements ApplicationRunner {
         commands.put("repeat", new RepeatCommand(provider,playerManager,audioLoadResult,youtubeHelper));
         commands.put("skip",new SkipCommand(provider,playerManager,audioLoadResult));
         commands.put("seek",new SeekCommand(provider,playerManager,audioLoadResult));
-        commands.put("hitbenha",new HitBenhaCommand(provider,playerManager,audioLoadResult));
-        commands.put("sanguchoto",new SanguchotoCommand(provider,playerManager,audioLoadResult));
-        commands.put("aceitedecoco",new AceiteDeCocoCommand(provider,playerManager,audioLoadResult));
-        commands.put("shuffle", new ShuffleCommand(provider,playerManager,audioLoadResult));
-
+        //commands.put("hitbenha",new HitBenhaCommand(provider,playerManager,audioLoadResult));
+        //commands.put("sanguchoto",new SanguchotoCommand(provider,playerManager,audioLoadResult));
+        //commands.put("aceitedecoco",new AceiteDeCocoCommand(provider,playerManager,audioLoadResult));
+        //commands.put("shuffle", new ShuffleCommand(provider,playerManager,audioLoadResult));
         //new NosVamosLevanthunderCommand().execute(discordClient);
 
         new CommandListener(commands,discordClient).handle();

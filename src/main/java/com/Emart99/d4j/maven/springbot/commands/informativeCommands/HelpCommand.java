@@ -26,9 +26,9 @@ public class HelpCommand implements Command {
         builder.addField("*porro","Me prendo ese \uD83D\uDE17\uD83D\uDC4C\uD83D\uDEAC.",false);
         builder.addField("*cf","Coinflip, devuelve cara o seca.",false);
         builder.addField("*cf2","Coinflip2, espera al menos 2 valores, ej: *cf2 a b.",false);
-        builder.addField("*sanguchoto","Reproduce un mitico audio del gordo agucho, en paz descanse ✝️.",false);
-        builder.addField("*aceitedecoco","Reproduce el gran audio aceite de coco by el Benha.",false);
-        builder.addField("*hitbenha","Reproduce todos versus el Benha.",false);
+        //builder.addField("*sanguchoto","Reproduce un mitico audio del gordo agucho, en paz descanse ✝️.",false);
+        //builder.addField("*aceitedecoco","Reproduce el gran audio aceite de coco by el Benha.",false);
+        //builder.addField("*hitbenha","Reproduce todos versus el Benha.",false);
         builder.addField("*perown","perown.",false);
         builder.addField("*baldu","Baldu la leyenda..",false);
         builder.addField("*fuckthat","fuckthat.",false);
