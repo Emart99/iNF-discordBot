@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="EmartD4j" />
+        <module name="iNF-discordBot" />
       </profile>
     </annotationProcessing>
   </component>
