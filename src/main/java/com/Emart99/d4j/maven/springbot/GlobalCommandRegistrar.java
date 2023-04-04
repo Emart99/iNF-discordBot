@@ -28,6 +28,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.HashMap;
 
 @Component
@@ -51,10 +52,11 @@ public class GlobalCommandRegistrar implements ApplicationRunner {
         player.addListener(scheduler);
         final AudioLoadResultHandlerImplementation audioLoadResult = new AudioLoadResultHandlerImplementation(player,scheduler);
         YoutubeSearch youtubeHelper = new YoutubeSearch(System.getenv("YOUTUBE_APIKEY"));
+        OpenAiService aiService = new OpenAiService(System.getenv("OPENAI_APIKEY"), Duration.ofSeconds(120));
         MemeApiConsumer memeApiConsumer = new MemeApiConsumer();
-        OpenAiService aiService = new OpenAiService(System.getenv("OPENAI_APIKEY"));
         GptApiConsumer gptApiConsumer = new GptApiConsumer(aiService);
 
+        commands.put("generateImageGpt", new GptGenerateImageCommand(gptApiConsumer));
         commands.put("chatGpt", new GptChatCommand(gptApiConsumer));
         commands.put("meme", new MemeCommand(memeApiConsumer));
         commands.put("baldu", new BalduCommand());

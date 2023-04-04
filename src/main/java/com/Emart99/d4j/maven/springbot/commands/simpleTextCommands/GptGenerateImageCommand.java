@@ -2,17 +2,14 @@ package com.Emart99.d4j.maven.springbot.commands.simpleTextCommands;
 
 import com.Emart99.d4j.maven.springbot.commands.Command;
 import com.Emart99.d4j.maven.springbot.utils.GptApiConsumer;
-import com.Emart99.d4j.maven.springbot.utils.MemeApiConsumer;
 import discord4j.core.event.domain.message.MessageCreateEvent;
 
-public class GptChatCommand implements Command {
+public class GptGenerateImageCommand implements Command {
     GptApiConsumer gptApiConsumer;
-    public GptChatCommand(GptApiConsumer gptApi){
-        gptApiConsumer = gptApi;
-    }
+    public GptGenerateImageCommand(GptApiConsumer gptApi){gptApiConsumer = gptApi;}
     @Override
     public String getName() {
-        return "*chatGpt";
+        return "*generateImageGpt";
     }
 
     @Override
@@ -21,7 +18,8 @@ public class GptChatCommand implements Command {
         event.getMessage()
                 .getChannel()
                 .block()
-                .createMessage(gptApiConsumer.getChatMessage(content))
+                .createMessage(gptApiConsumer.getImage(content))
                 .block();
+
     }
 }

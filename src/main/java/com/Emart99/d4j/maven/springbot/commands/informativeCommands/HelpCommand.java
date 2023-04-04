@@ -15,7 +15,8 @@ public class HelpCommand implements Command {
     public void execute(MessageCreateEvent event) throws Exception {
         EmbedCreateSpec.Builder builder = EmbedCreateSpec.builder();
         builder.title("Comandos disponibles");
-        builder.addField("*play","Reproduce tracks de youtube, espera como input un link o el nombre de un video, si ya hay un track reproduciendo lo agrega a la cola.",false);
+        builder.addField("*generateImageGpt","Genera una imagen basada en lo que le pidas mediante gpt.",false);
+        builder.addField("*chatGpt","Permite realizar una conversacion con chatGpt 3.5.",false);
         builder.addField("*play","Reproduce tracks de youtube N veces, espera como input la cantidad de veces que lo quiere repetir y un link o el nombre de un video, si ya hay un track reproduciendo se agrega todo a la cola.",false);
         builder.addField("*skip","Saltea al siguiente track de la cola.",false);
         builder.addField("*seek","Adelanta el track que se esta reproduciendo actualmente a un momento especifico, espera como input horas minutos segundos, de la forma 00:00 o 00:00:00.",false);
