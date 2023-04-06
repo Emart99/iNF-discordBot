@@ -7,6 +7,7 @@
 - #### Reproducir musica de youtube Tanto con el link, como con el nombre del video (lo busca), ademas tiene comandos como play, stop, pause, resume, seek, shuffle, skip.
 - #### Comandos de texto random.
 - #### Comandos de texto con scheduling.  (ej comando que se ejecuta a x hora todos los dias)
+- #### Comandos que usan ChatGpt.
 - #### etc.
 
 ### Dependencias
@@ -15,3 +16,4 @@
 - #### Logback-classic
 - #### Lavaplayer
 - #### YoutubeApi
+- #### OpenAiApi

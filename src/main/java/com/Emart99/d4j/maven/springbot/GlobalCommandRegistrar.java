@@ -56,7 +56,6 @@ public class GlobalCommandRegistrar implements ApplicationRunner {
         MemeApiConsumer memeApiConsumer = new MemeApiConsumer();
         GptApiConsumer gptApiConsumer = new GptApiConsumer(aiService);
 
-        commands.put("generateImageGpt", new GptGenerateImageCommand(gptApiConsumer));
         commands.put("chatGpt", new GptChatCommand(gptApiConsumer));
         commands.put("meme", new MemeCommand(memeApiConsumer));
         commands.put("baldu", new BalduCommand());
@@ -74,10 +73,15 @@ public class GlobalCommandRegistrar implements ApplicationRunner {
         commands.put("repeat", new RepeatCommand(provider,playerManager,audioLoadResult,youtubeHelper));
         commands.put("skip",new SkipCommand(provider,playerManager,audioLoadResult));
         commands.put("seek",new SeekCommand(provider,playerManager,audioLoadResult));
+        commands.put("shuffle", new ShuffleCommand(provider,playerManager,audioLoadResult));
+
+        //Deshabilitado porque consume muchos "tokens" de la api de open ai. (es decir es un comando caro)
+        //commands.put("generateImageGpt", new GptGenerateImageCommand(gptApiConsumer));
+
+        //Deshabilitados porque los videos de youtube que reproducian se cayeron.
         //commands.put("hitbenha",new HitBenhaCommand(provider,playerManager,audioLoadResult));
         //commands.put("sanguchoto",new SanguchotoCommand(provider,playerManager,audioLoadResult));
         //commands.put("aceitedecoco",new AceiteDeCocoCommand(provider,playerManager,audioLoadResult));
-        //commands.put("shuffle", new ShuffleCommand(provider,playerManager,audioLoadResult));
         //new NosVamosLevanthunderCommand().execute(discordClient);
 
         new CommandListener(commands,discordClient).handle();
