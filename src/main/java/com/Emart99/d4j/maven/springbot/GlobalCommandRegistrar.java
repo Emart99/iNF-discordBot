@@ -52,7 +52,7 @@ public class GlobalCommandRegistrar implements ApplicationRunner {
         player.addListener(scheduler);
         final AudioLoadResultHandlerImplementation audioLoadResult = new AudioLoadResultHandlerImplementation(player,scheduler);
         YoutubeSearch youtubeHelper = new YoutubeSearch(System.getenv("YOUTUBE_APIKEY"));
-        OpenAiService aiService = new OpenAiService(System.getenv("OPENAI_APIKEY"), Duration.ofSeconds(120));
+        OpenAiService aiService = new OpenAiService(System.getenv("OPENAI_APIKEY"), Duration.ofSeconds(300));
         MemeApiConsumer memeApiConsumer = new MemeApiConsumer();
         GptApiConsumer gptApiConsumer = new GptApiConsumer(aiService);
 
