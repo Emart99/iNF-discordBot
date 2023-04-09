@@ -17,6 +17,7 @@ public class GptChatCommand implements Command {
         return "*chatGpt";
     }
 
+
     @Override
     public void execute(MessageCreateEvent event) throws Exception {
         final String content = event.getMessage().getContent().replace("*chatGpt ","");
