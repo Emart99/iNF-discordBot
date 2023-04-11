@@ -22,6 +22,7 @@ public class HelpCommand implements Command {
         builder.addField("*stop","Borra la cola y desconecta al bot del channel.",false);
         builder.addField("*shuffle","Randomiza la cola.",false);
         builder.addField("*porro","Me prendo ese \uD83D\uDE17\uD83D\uDC4C\uD83D\uDEAC.",false);
+        builder.addField("*ping","Retorna un estimado de ping en ms.",false);
         builder.addField("*coinflip","Coinflip, devuelve cara o seca.",false);
         builder.addField("*coinflipv2","Coinflip2, espera al menos 2 valores, ej: *cf2 a b.",false);
         //builder.addField("*sanguchoto","Reproduce un mitico audio del gordo agucho, en paz descanse ✝️.",false);

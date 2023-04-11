@@ -72,6 +72,7 @@ public class GlobalCommandRegistrar implements ApplicationRunner {
         commands.put("resume", new ResumeCommand(player));
         commands.put("help", new HelpCommand());
         commands.put("porro", new PorroCommand());
+        commands.put("ping", new PingCommand());
         commands.put("perown", new PeroWnCommand());
         commands.put("godno", new GodNoCommand());
         commands.put("baldu", new BalduCommand());
